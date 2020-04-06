@@ -1,6 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import * as L from 'leaflet';
 import { ShapeService } from '../_services/shape.service';
+import { PopUpService } from '../_services/pop-up.service';
 
 @Component({
   selector: 'app-map',
@@ -11,7 +12,7 @@ export class MapComponent implements AfterViewInit {
   private map;
   private states;
 
-  constructor(private shapeService: ShapeService) { }
+  constructor(private shapeService: ShapeService, private popupService: PopUpService) { }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -51,8 +52,8 @@ export class MapComponent implements AfterViewInit {
       }),
       onEachFeature: (feature, layer) => (
         layer.on({
-          mouseover: (e) => (this.highlightFeature(e)),
-          mouseout: (e) => (this.resetFeature(e)),
+          mouseover: (e) => (this.highlightFeature(e, feature)),
+          mouseout: (e) => (this.resetFeature(e))
         })
       )
     });
@@ -60,7 +61,7 @@ export class MapComponent implements AfterViewInit {
     this.map.addLayer(stateLayer);
   }
 
-  private highlightFeature(e) {
+  private highlightFeature(e, feature) {
     const layer = e.target;
     layer.setStyle({
       weight: 5,
@@ -69,6 +70,9 @@ export class MapComponent implements AfterViewInit {
       fillOpacity: 1.0,
       fillColor: '#FAE042',
     });
+    var content = this.popupService.makeCapitalPopup(feature);
+
+    layer.bindPopup(content);
   }
 
   private resetFeature(e) {

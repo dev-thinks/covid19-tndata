@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MapComponent } from './map/map.component';
 import { ShapeService } from './_services/shape.service';
+import { PopUpService } from './_services/pop-up.service';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { ShapeService } from './_services/shape.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ShapeService],
+  providers: [ShapeService, PopUpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
