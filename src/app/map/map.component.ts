@@ -32,6 +32,12 @@ export class MapComponent implements AfterViewInit {
       maxZoom: 19
     });
 
+    // additional map layer
+    const tiles2 = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    });
+
     tiles.addTo(this.map);
 
     this.map.touchZoom.disable();
@@ -85,7 +91,5 @@ export class MapComponent implements AfterViewInit {
       fillColor: '#6DB65B'
     });
   }
-
-  
 
 }
