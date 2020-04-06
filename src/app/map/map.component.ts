@@ -1,5 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import * as L from 'leaflet';
+import { ShapeService } from '../_services/shape.service';
 
 @Component({
   selector: 'app-map',
@@ -8,11 +9,17 @@ import * as L from 'leaflet';
 })
 export class MapComponent implements AfterViewInit {
   private map;
+  private states;
 
-  constructor() { }
+  constructor(private shapeService: ShapeService) { }
 
   ngAfterViewInit(): void {
     this.initMap();
+
+    this.shapeService.getStateShapes().subscribe(states => {
+      this.states = states;
+      this.initStatesLayer();
+    });
   }
 
   private initMap(): void {
@@ -26,5 +33,55 @@ export class MapComponent implements AfterViewInit {
 
     tiles.addTo(this.map);
 
+    this.map.touchZoom.disable();
+    this.map.doubleClickZoom.disable();
+    this.map.scrollWheelZoom.disable();
+    this.map.boxZoom.disable();
+    this.map.keyboard.disable();
   }
+
+  private initStatesLayer() {
+    const stateLayer = L.geoJSON(this.states, {
+      style: (feature) => ({
+        weight: 2,
+        opacity: 1,
+        color: 'blue',
+        fillOpacity: 0.8,
+        fillColor: '#6DB65B'
+      }),
+      onEachFeature: (feature, layer) => (
+        layer.on({
+          mouseover: (e) => (this.highlightFeature(e)),
+          mouseout: (e) => (this.resetFeature(e)),
+        })
+      )
+    });
+
+    this.map.addLayer(stateLayer);
+  }
+
+  private highlightFeature(e) {
+    const layer = e.target;
+    layer.setStyle({
+      weight: 5,
+      opacity: 1.0,
+      color: '#DFA612',
+      fillOpacity: 1.0,
+      fillColor: '#FAE042',
+    });
+  }
+
+  private resetFeature(e) {
+    const layer = e.target;
+    layer.setStyle({
+      weight: 2,
+      opacity: 1,
+      color: 'blue',
+      fillOpacity: 0.8,
+      fillColor: '#6DB65B'
+    });
+  }
+
+  
+
 }
