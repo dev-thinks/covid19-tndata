@@ -76,6 +76,7 @@ export class MapComponent implements AfterViewInit {
       fillOpacity: 1.0,
       fillColor: '#FAE042',
     });
+
     var content = this.popupService.makeCapitalPopup(feature);
 
     layer.bindPopup(content);
