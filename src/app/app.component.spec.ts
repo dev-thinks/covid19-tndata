@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'leaflet-example'`, () => {
+  it(`should have as title 'tamilnadu-maps'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('leaflet-example');
+    expect(app.title).toEqual('tamilnadu-maps');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('leaflet-example app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('tamilnadu-maps app is running!');
   });
 });
