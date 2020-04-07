@@ -70,7 +70,7 @@ export class MapComponent implements AfterViewInit {
   private highlightFeature(e, feature) {
     const layer = e.target;
     layer.setStyle({
-      weight: 5,
+      weight: 3,
       opacity: 1.0,
       color: '#DFA612',
       fillOpacity: 1.0,
