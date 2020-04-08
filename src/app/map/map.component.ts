@@ -117,7 +117,7 @@ export class MapComponent implements AfterViewInit {
 
   }
 
-  private getLegendContent(){
+  private getLegendContent() {
     const v1 = 10;
     const v2 = 11;
     const v3 = 100;
