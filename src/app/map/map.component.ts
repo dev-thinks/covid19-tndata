@@ -24,7 +24,7 @@ export class MapComponent implements AfterViewInit {
   }
 
   private initMap(): void {
-    this.map = L.map('map', { zoomControl: false, draggable: false }).setView([11.1271, 78.6569], 7);
+    this.map = L.map('map', { zoomControl: false, draggable: false }).setView([11, 78.6569], 7);
 
     const tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
