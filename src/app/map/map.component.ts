@@ -101,7 +101,6 @@ export class MapComponent implements AfterViewInit {
 
         // remove reference from mapinstance
         delete map.legend;
-
       },
 
       // new method for setting innerHTML
