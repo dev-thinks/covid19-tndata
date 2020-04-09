@@ -40,7 +40,7 @@ export class TablegridComponent implements OnInit {
 
   setAutoHeight() {
     this.gridApi.setDomLayout('autoHeight');
-    (<HTMLElement>document.querySelector('#myGrid')).style.height = '';
+    (<HTMLElement>document.querySelector('#stateGrid')).style.height = '';
   }
 
   onGridReady(params) {
