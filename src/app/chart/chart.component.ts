@@ -16,8 +16,6 @@ export class ChartComponent implements OnInit {
   constructor(private chartService: ChartService) { }
 
   ngOnInit(): void {
-    console.log(this.name);
-
     if (this.name === 'totalCases') {
       this.chartService.getChartCaseData().subscribe(data => {
         this.highcharts = Highcharts;

@@ -16,8 +16,6 @@ export class TablegridComponent implements OnInit {
 
   constructor(private dataService: DataService) {
     this.defaultColDef = {
-      enableRowGroup: true,
-      enableValue: true,
       sortable: true,
       resizable: false
     };
