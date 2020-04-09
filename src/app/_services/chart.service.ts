@@ -12,4 +12,8 @@ export class ChartService {
   getChartCaseData(): Observable<any> {
     return this.http.get('https://localhost:5001/api/map/chartdata/cases');
   }
+
+  getChartDeathData(): Observable<any> {
+    return this.http.get('https://localhost:5001/api/map/chartdata/death');
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { ChartService } from '../_services/chart.service';
 
@@ -8,6 +8,7 @@ import { ChartService } from '../_services/chart.service';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
+  @Input() name: string;
 
   public chartOptions;
   public highcharts;
@@ -15,9 +16,19 @@ export class ChartComponent implements OnInit {
   constructor(private chartService: ChartService) { }
 
   ngOnInit(): void {
-    this.chartService.getChartCaseData().subscribe(data => {
-      this.highcharts = Highcharts;
-      this.chartOptions = data;
-    });
+    console.log(this.name);
+
+    if (this.name === 'totalCases') {
+      this.chartService.getChartCaseData().subscribe(data => {
+        this.highcharts = Highcharts;
+        this.chartOptions = data;
+      });
+    }
+    else if (this.name === 'deathCases') {
+      this.chartService.getChartDeathData().subscribe(data => {
+        this.highcharts = Highcharts;
+        this.chartOptions = data;
+      });
+    }
   }
 }

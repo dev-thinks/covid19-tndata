@@ -7,15 +7,6 @@
                 </div>
             </div>
         </div>
-        <!--/.col-->
-        <div class="col-sm-6 col-lg-4">
-            <div class="card text-white bg-danger">
-                <div class="card-body">
-                    <div class="text-value text-center font-weight-bold display-5"><b>{{stateDeathCount}}</b> Deaths</div>
-                </div>
-            </div>
-        </div>
-        <!--/.col-->
         <div class="col-sm-6 col-lg-4">
             <div class="card text-white bg-success">
                 <div class="card-body">
@@ -23,16 +14,28 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!--/.row-->
-
-    <div class="row">
-        <div class="col-sm-12 col-lg-12">
-            <app-chart></app-chart>
+        <div class="col-sm-6 col-lg-4">
+            <div class="card text-white bg-danger">
+                <div class="card-body">
+                    <div class="text-value text-center font-weight-bold display-5"><b>{{stateDeathCount}}</b> Deaths</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row paddingtop">
+        <div class="col-sm-12 col-lg-12">
+            <app-chart name="totalCases"></app-chart>
+        </div>
+    </div>
+
+    <div class="row paddingtop">
+        <div class="col-sm-12 col-lg-12">
+            <app-chart name="deathCases"></app-chart>
+        </div>
+    </div>
+
+    <div class="row paddingtop">
         <div class="col-sm-12 col-lg-12">
             <app-map></app-map>
         </div>
