@@ -9,8 +9,12 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getStateData(): Observable<any>{
+  getStateData(): Observable<any> {
     return this.http.get('https://localhost:5001/api/map/statedata');
+  }
+
+  getGridData(): Observable<any> {
+    return this.http.get('https://localhost:5001/api/map/griddata');
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../_services/data.service';
 
 @Component({
   selector: 'app-tablegrid',
@@ -11,8 +12,9 @@ export class TablegridComponent implements OnInit {
   defaultColDef;
   domLayout;
   private gridColumnApi;
+  rowData;
 
-  constructor() {
+  constructor(private dataService: DataService) {
     this.defaultColDef = {
       enableRowGroup: true,
       enableValue: true,
@@ -24,18 +26,16 @@ export class TablegridComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dataService.getGridData().subscribe(data => {
+      this.rowData = data;
+    });
   }
 
   columnDefs = [
-    { headerName: 'Make', field: 'make', checkboxSelection: true },
-    { headerName: 'Model', field: 'model' },
-    { headerName: 'Price', field: 'price' }
-  ];
-
-  rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 }
+    { headerName: 'District Name', field: 'name', checkboxSelection: true },
+    { headerName: 'Total Case(s)', field: 'totalCases' },
+    { headerName: 'Reported Death(s)', field: 'death' },
+    { headerName: 'Recovered Case(s)', field: 'recovered' }
   ];
 
   setAutoHeight() {
