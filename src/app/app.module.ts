@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { AgGridModule } from 'ag-grid-angular';
 
 import { MapComponent } from './map/map.component';
 import { ShapeService } from './_services/shape.service';
@@ -13,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartComponent } from './chart/chart.component';
+import { TablegridComponent } from './tablegrid/tablegrid.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,15 @@ import { ChartComponent } from './chart/chart.component';
     NavbarComponent,
     ContactComponent,
     DashboardComponent,
-    ChartComponent
+    ChartComponent,
+    TablegridComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    AgGridModule.withComponents([])
   ],
   providers: [ShapeService, PopUpService],
   bootstrap: [AppComponent]
