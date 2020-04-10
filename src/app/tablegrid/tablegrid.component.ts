@@ -11,13 +11,21 @@ export class TablegridComponent implements OnInit {
   private gridApi;
   defaultColDef;
   domLayout;
+  rowClassRules;
   private gridColumnApi;
   rowData;
+  getRowStyle;
 
   constructor(private dataService: DataService) {
     this.defaultColDef = {
       sortable: true,
       resizable: false
+    };
+
+    this.getRowStyle = function (params) {
+      if (params.node.rowIndex === 0) {
+        return { 'font-weight': 'bolder', 'color': 'red' };
+      }
     };
 
     this.domLayout = 'autoHeight';
@@ -30,7 +38,7 @@ export class TablegridComponent implements OnInit {
   }
 
   columnDefs = [
-    { headerName: 'District Name', field: 'name', checkboxSelection: true },
+    { headerName: 'District Name', field: 'name', checkboxSelection: params => params.node.rowIndex > 0 },
     { headerName: 'Total Case(s)', field: 'totalCases' },
     { headerName: 'Reported Death(s)', field: 'death' },
     { headerName: 'Recovered Case(s)', field: 'recovered' }
@@ -44,6 +52,8 @@ export class TablegridComponent implements OnInit {
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
+
+    params.api.sizeColumnsToFit();
   }
 
 }

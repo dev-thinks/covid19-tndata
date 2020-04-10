@@ -1,3 +1,4 @@
 <ag-grid-angular #agGrid id="stateGrid" class="ag-theme-alpine" [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef" [rowData]="rowData" 
-    [domLayout]="domLayout" [animateRows]="true" (gridReady)="onGridReady($event)"></ag-grid-angular>
+    [defaultColDef]="defaultColDef" [rowData]="rowData" [getRowStyle]="getRowStyle" suppressCellSelection=true
+    rowSelection='single' [domLayout]="domLayout" [animateRows]="true" (gridReady)="onGridReady($event)">
+</ag-grid-angular>
