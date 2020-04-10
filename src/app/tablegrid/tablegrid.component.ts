@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../_services/data.service';
+import { CommonService } from '../_services/common.service';
 
 @Component({
   selector: 'app-tablegrid',
@@ -16,7 +17,7 @@ export class TablegridComponent implements OnInit {
   rowData;
   getRowStyle;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private commonService: CommonService) {
     this.defaultColDef = {
       sortable: true,
       resizable: false
@@ -47,6 +48,17 @@ export class TablegridComponent implements OnInit {
   setAutoHeight() {
     this.gridApi.setDomLayout('autoHeight');
     (<HTMLElement>document.querySelector('#stateGrid')).style.height = '';
+  }
+
+  onSelectionChanged(event) {
+    var selectedRows = this.gridApi.getSelectedRows();
+
+    if (selectedRows != null && selectedRows.length > 0) {
+      let dtName = selectedRows[0].name;
+      console.log('initiated for ' + dtName);
+
+      this.commonService.announceMission(dtName);
+    }
   }
 
   onGridReady(params) {

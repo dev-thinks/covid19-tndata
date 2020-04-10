@@ -13,8 +13,9 @@ import { PopUpService } from './_services/pop-up.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ChartComponent } from './chart/chart.component';
+import { ChartCaseComponent } from './chart/chartCase.component';
 import { TablegridComponent } from './tablegrid/tablegrid.component';
+import { ChartDeathComponent } from './chart/chart-death.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,9 @@ import { TablegridComponent } from './tablegrid/tablegrid.component';
     NavbarComponent,
     ContactComponent,
     DashboardComponent,
-    ChartComponent,
-    TablegridComponent
+    ChartCaseComponent,
+    TablegridComponent,
+    ChartDeathComponent
   ],
   imports: [
     BrowserModule,
