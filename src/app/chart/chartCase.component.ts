@@ -19,7 +19,7 @@ export class ChartCaseComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.loadChart();
+    this.loadChart('');
   }
 
   ngAfterViewInit() {
@@ -28,15 +28,15 @@ export class ChartCaseComponent implements OnInit, OnDestroy {
       districtName => {
         console.log('received case for ' + districtName);
 
-        this.loadChart();
+        this.loadChart(districtName);
       });
 
     // this.commonService.missionAnnounced$.next('');
   }
 
-  loadChart() {
+  loadChart(dtName: string) {
 
-    this.chartService.getChartCaseData().subscribe(data => {
+    this.chartService.getChartCaseData(dtName).subscribe(data => {
       this.highcharts = Highcharts;
       this.chartOptions = data;
     });

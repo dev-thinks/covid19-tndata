@@ -19,7 +19,7 @@ export class ChartDeathComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.loadChart();
+    this.loadChart('');
   }
 
   ngAfterViewInit() {
@@ -28,15 +28,15 @@ export class ChartDeathComponent implements OnInit, OnDestroy {
       districtName => {
         console.log('received death for ' + districtName);
 
-        this.loadChart();
+        this.loadChart(districtName);
       });
 
     // this.commonService.missionAnnounced$.next('');
   }
 
-  loadChart() {
+  loadChart(dtName: string) {
 
-    this.chartService.getChartDeathData().subscribe(data => {
+    this.chartService.getChartDeathData(dtName).subscribe(data => {
       this.highcharts = Highcharts;
       this.chartOptions = data;
     });

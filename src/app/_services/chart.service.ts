@@ -9,11 +9,11 @@ export class ChartService {
 
   constructor(private http: HttpClient) { }
 
-  getChartCaseData(): Observable<any> {
-    return this.http.get('https://localhost:5001/api/map/chartdata/cases');
+  getChartCaseData(dtName: string): Observable<any> {
+    return this.http.get('https://localhost:5001/api/map/chartdata/cases?dtName=' + dtName);
   }
 
-  getChartDeathData(): Observable<any> {
-    return this.http.get('https://localhost:5001/api/map/chartdata/death');
+  getChartDeathData(dtName: string): Observable<any> {
+    return this.http.get('https://localhost:5001/api/map/chartdata/death?dtName=' + dtName);
   }
 }
