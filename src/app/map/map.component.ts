@@ -2,6 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import * as L from 'leaflet';
 import { ShapeService } from '../_services/shape.service';
 import { PopUpService } from '../_services/pop-up.service';
+import { CommonService } from '../_services/common.service';
 
 @Component({
   selector: 'app-map',
@@ -13,7 +14,7 @@ export class MapComponent implements AfterViewInit {
   private info;
   private states;
 
-  constructor(private shapeService: ShapeService, private popupService: PopUpService) { }
+  constructor(private shapeService: ShapeService, private popupService: PopUpService, private commonService: CommonService) { }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -158,7 +159,8 @@ export class MapComponent implements AfterViewInit {
       onEachFeature: (feature, layer) => (
         layer.on({
           mouseover: (e) => (this.highlightFeature(e, feature)),
-          mouseout: (e) => (this.resetFeature(e))
+          mouseout: (e) => (this.resetFeature(e)),
+          click: (e) => (this.refreshDataForMap(e, feature))
         })
       )
     });
@@ -181,6 +183,10 @@ export class MapComponent implements AfterViewInit {
     layer.bindPopup(content);
 
     this.info.update(feature.properties);
+  }
+
+  private refreshDataForMap(e, feature) {
+    this.commonService.announceMission(feature.properties.district);
   }
 
   private resetFeature(e) {
