@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import * as L from 'leaflet';
 import { ShapeService } from '../_services/shape.service';
 import { PopUpService } from '../_services/pop-up.service';
@@ -14,7 +14,8 @@ export class MapComponent implements AfterViewInit {
   private info;
   private states;
 
-  constructor(private shapeService: ShapeService, private popupService: PopUpService, private commonService: CommonService) { }
+  constructor(private shapeService: ShapeService, private popupService: PopUpService, 
+    private commonService: CommonService, private elementRef: ElementRef) { }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -23,6 +24,9 @@ export class MapComponent implements AfterViewInit {
       this.states = states;
       this.initStatesLayer();
     });
+
+    this.elementRef.nativeElement.querySelector('#resetlink')
+      .addEventListener('click', this.resetView.bind(this));
   }
 
   private initMap(): void {
@@ -59,8 +63,9 @@ export class MapComponent implements AfterViewInit {
     // method that we will use to update the control based on feature properties passed
     this.info.update = function (props) {
       this._div.innerHTML = '<h4>Tamil Nadu Status</h4>' + (props ?
-        '<b>' + props.district + '</b><br />Total Cases:' + props.totalCases + ' ~~ New Cases: ' + props.newCases
-        : 'Hover over a district');
+        '<b>' + props.district + '</b><br />Total Cases:' + props.totalCases + ' ~~ New Cases: ' + props.newCases + 
+        '<br/><span class="badge badge-primary cursor-pointer" id="resetlink">Reset view</span>'
+        : 'Click over a district to see more information. <br/><span class="badge badge-primary cursor-pointer" id="resetlink">Reset view</span>');
     };
 
     this.info.addTo(this.map);
@@ -149,18 +154,12 @@ export class MapComponent implements AfterViewInit {
 
   private initStatesLayer() {
     const stateLayer = L.geoJSON(this.states, {
-      style: (feature) => ({
-        weight: 2,
-        opacity: 1,
-        color: 'blue',
-        fillOpacity: 0.8,
-        fillColor: '#6DB65B'
-      }),
+      style: (feature) => (this.applyDistrictStyle(feature)),
       onEachFeature: (feature, layer) => (
         layer.on({
           mouseover: (e) => (this.highlightFeature(e, feature)),
-          mouseout: (e) => (this.resetFeature(e)),
-          click: (e) => (this.refreshDataForMap(e, feature))
+          // mouseout: (e) => (this.resetFeature(e)),
+          click: (e) => (this.refreshDataForMap(feature.properties.district))
         })
       )
     });
@@ -168,38 +167,72 @@ export class MapComponent implements AfterViewInit {
     this.map.addLayer(stateLayer);
   }
 
+  private applyDistrictStyle(feature) {
+    console.log(feature.properties);
+
+    let districtColor = 'default-color';
+    let count = feature.properties.totalCases;
+
+    if (count > 0) {
+      if (count < 25) {
+        districtColor = 'level3-color';
+      } else if (count >= 25 && count < 100) {
+        districtColor = 'level2-color';
+      } else if (count >= 100) {
+        districtColor = 'level1-color';
+      }
+    }
+
+    return {
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0.8,
+      className: districtColor
+    };
+  }
+
   private highlightFeature(e, feature) {
     const layer = e.target;
-    layer.setStyle({
-      weight: 3,
-      opacity: 1.0,
-      color: '#DFA612',
-      fillOpacity: 1.0,
-      fillColor: '#FAE042',
-    });
+    // layer.setStyle({
+    //   weight: 3,
+    //   opacity: 1.0,
+    //   color: '#DFA612',
+    //   fillOpacity: 1.0,
+    //   fillColor: '#FAE042',
+    // });
 
     var content = this.popupService.makeCapitalPopup(feature);
 
     layer.bindPopup(content);
 
     this.info.update(feature.properties);
+
+    this.elementRef.nativeElement.querySelector('#resetlink')
+      .addEventListener('click', this.resetView.bind(this));
   }
 
-  private refreshDataForMap(e, feature) {
-    this.commonService.announceMission(feature.properties.district);
+  private refreshDataForMap(dtName) {
+    this.commonService.announceMission(dtName);
   }
 
   private resetFeature(e) {
     const layer = e.target;
-    layer.setStyle({
-      weight: 2,
-      opacity: 1,
-      color: 'blue',
-      fillOpacity: 0.8,
-      fillColor: '#6DB65B'
-    });
+    // layer.setStyle({
+    //   weight: 2,
+    //   opacity: 1,
+    //   color: 'blue',
+    //   fillOpacity: 0.8,
+    //   fillColor: '#6DB65B'
+    // });
 
     this.info.update();
+  }
+
+  resetView(event){
+    console.log('reset map '+ event);
+    this.info.update();
+
+    this.refreshDataForMap('');
   }
 
 }
