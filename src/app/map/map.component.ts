@@ -14,7 +14,7 @@ export class MapComponent implements AfterViewInit {
   private info;
   private states;
 
-  constructor(private shapeService: ShapeService, private popupService: PopUpService, 
+  constructor(private shapeService: ShapeService, private popupService: PopUpService,
     private commonService: CommonService, private elementRef: ElementRef) { }
 
   ngAfterViewInit(): void {
@@ -37,13 +37,6 @@ export class MapComponent implements AfterViewInit {
       subdomains: 'abcd',
       maxZoom: 19
     });
-
-    // additional map layer
-    const tiles2 = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-    });
-
     tiles.addTo(this.map);
 
     this.map.touchZoom.disable();
@@ -55,7 +48,7 @@ export class MapComponent implements AfterViewInit {
     this.info = L.control();
 
     this.info.onAdd = function (map) {
-      this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+      this._div = L.DomUtil.create('div', 'info');
       this.update();
       return this._div;
     };
@@ -63,7 +56,7 @@ export class MapComponent implements AfterViewInit {
     // method that we will use to update the control based on feature properties passed
     this.info.update = function (props) {
       this._div.innerHTML = '<h4>Tamil Nadu Status</h4>' + (props ?
-        '<b>' + props.district + '</b><br />Total Cases:' + props.totalCases + ' ~~ New Cases: ' + props.newCases + 
+        '<b>' + props.district + '</b><br />Total Cases:' + props.totalCases + ' ~~ New Cases: ' + props.newCases +
         '<br/><span class="badge badge-primary cursor-pointer" id="resetlink">Reset view</span>'
         : 'Click over a district to see more information. <br/><span class="badge badge-primary cursor-pointer" id="resetlink">Reset view</span>');
     };
@@ -80,36 +73,16 @@ export class MapComponent implements AfterViewInit {
         const v2 = 11;
         const v3 = 100;
 
-        // create container
         var container = L.DomUtil.create('div', 'legend');
-
-        const labels = [
-          '<= ' + v1 + ' cases',
-          'Between' + v1 + ' and ' + v2 + ' cases',
-          '> ' + v3 + ' cases'
-        ];
-        const grades = [v1 + 1, v2 + 1, v3];
-        container.innerHTML = '<div><b>Legend</b></div>';
-        for (let i = 0; i < grades.length; i++) {
-          container.innerHTML += '<i style="background:blue"> &nbsp; &nbsp;</i> &nbsp; &nbsp;'
-            + labels[i] + '<br/>';
-        }
-
-        // if content provided
         if (this.options.content) {
-          // set content
           container.innerHTML = this.options.content;
-
         }
         return container;
       },
       'onRemove': function (map) {
-
-        // remove reference from mapinstance
         delete map.legend;
       },
 
-      // new method for setting innerHTML
       'setContent': function (str) {
         this.getContainer().innerHTML = str;
       }
@@ -119,37 +92,29 @@ export class MapComponent implements AfterViewInit {
       'position': 'topright',
       'content': this.getLegendContent()
     }));
-
   }
 
   private getLegendContent() {
-    const v1 = 10;
-    const v2 = 11;
+    const v1 = 25;
+    const v2 = 50;
     const v3 = 100;
 
-    // create container
     var container = document.createElement('div');
     container.className = 'legend';
 
     const labels = [
-      '<= ' + v1 + ' cases',
-      'Between' + v1 + ' and ' + v2 + ' cases',
-      '> ' + v3 + ' cases'
+      '< ' + v1 + ' cases',
+      'Between ' + v1 + ' and ' + v2 + ' cases',
+      'Between ' + v2 + ' and ' + v3 + ' cases',
+      '>= ' + v3 + ' cases'
     ];
-    const grades = [v1 + 1, v2 + 1, v3];
+    const grades = [v1, v1 + 1, v2, v3];
     container.innerHTML = '';
-    for (let i = 0; i < grades.length; i++) {
-      container.innerHTML += '<i style="background:' + this.getColor(grades[i], v3, v1) + '"> &nbsp; &nbsp;</i> &nbsp; &nbsp;'
-        + labels[i] + '<br/>';
+    for (let i = grades.length - 1; i >= 0; i--) {
+      container.innerHTML += '<span class="legend-text"><i class="legend' + i + '-color"> &nbsp; &nbsp;</i> &nbsp; &nbsp;'
+        + labels[i] + '</span><br/>';
     }
-
     return container.innerHTML;
-  }
-
-  private getColor(value, max, min) {
-    const val = (value - min) / (max - min);
-    const hue = (val * 120).toString(10);
-    return ['hsl(', hue, ',100%,50%)'].join('');
   }
 
   private initStatesLayer() {
@@ -158,8 +123,7 @@ export class MapComponent implements AfterViewInit {
       onEachFeature: (feature, layer) => (
         layer.on({
           mouseover: (e) => (this.highlightFeature(e, feature)),
-          // mouseout: (e) => (this.resetFeature(e)),
-          click: (e) => (this.refreshDataForMap(feature.properties.district))
+          click: (e) => (this.RefreshOnClick(e, feature))
         })
       )
     });
@@ -168,18 +132,18 @@ export class MapComponent implements AfterViewInit {
   }
 
   private applyDistrictStyle(feature) {
-    console.log(feature.properties);
-
     let districtColor = 'default-color';
     let count = feature.properties.totalCases;
 
     if (count > 0) {
       if (count < 25) {
         districtColor = 'level3-color';
-      } else if (count >= 25 && count < 100) {
+      } else if (count >= 25 && count < 50) {
         districtColor = 'level2-color';
-      } else if (count >= 100) {
+      } else if (count >= 50 && count < 100) {
         districtColor = 'level1-color';
+      } else if (count >= 100) {
+        districtColor = 'level0-color';
       }
     }
 
@@ -192,47 +156,31 @@ export class MapComponent implements AfterViewInit {
   }
 
   private highlightFeature(e, feature) {
+    this.elementRef.nativeElement.querySelector('#resetlink')
+      .addEventListener('click', this.resetView.bind(this));
+  }
+
+  private RefreshOnClick(e, feature) {
     const layer = e.target;
-    // layer.setStyle({
-    //   weight: 3,
-    //   opacity: 1.0,
-    //   color: '#DFA612',
-    //   fillOpacity: 1.0,
-    //   fillColor: '#FAE042',
-    // });
 
     var content = this.popupService.makeCapitalPopup(feature);
-
     layer.bindPopup(content);
 
     this.info.update(feature.properties);
 
     this.elementRef.nativeElement.querySelector('#resetlink')
       .addEventListener('click', this.resetView.bind(this));
+
+    this.refreshDataForMap(feature.properties.district);
   }
 
   private refreshDataForMap(dtName) {
     this.commonService.announceMission(dtName);
   }
 
-  private resetFeature(e) {
-    const layer = e.target;
-    // layer.setStyle({
-    //   weight: 2,
-    //   opacity: 1,
-    //   color: 'blue',
-    //   fillOpacity: 0.8,
-    //   fillColor: '#6DB65B'
-    // });
-
-    this.info.update();
-  }
-
-  resetView(event){
-    console.log('reset map '+ event);
+  resetView(event) {
     this.info.update();
 
     this.refreshDataForMap('');
   }
-
 }
