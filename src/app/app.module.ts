@@ -8,6 +8,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { AgGridModule } from 'ag-grid-angular';
 import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { FormsModule } from '@angular/forms';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
 
 import { MapComponent } from './map/map.component';
 import { ShapeService } from './_services/shape.service';
@@ -39,6 +40,7 @@ import { FooterComponent } from './footer/footer.component';
     HighchartsChartModule,
     EmojiModule,
     FormsModule,
+    NgxScrollTopModule,
     AgGridModule.withComponents([])
   ],
   providers: [ShapeService, PopUpService],
