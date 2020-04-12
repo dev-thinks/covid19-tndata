@@ -1,4 +1,4 @@
-# Covid19data - tamilnadu
+# Covid19-data - tamilnadu
 
 This portal is an effort to consolidating the daily report released by Health dept. during daily briefing at 6 PM, which tries to enable us to view in one place.
 
