@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactInfo } from './contact-info';
+import { DataService } from '../_services/data.service';
 
 @Component({
   selector: 'app-contact',
@@ -11,7 +12,7 @@ export class ContactComponent implements OnInit {
   model = new ContactInfo('', '', '');
   submitted = false;
   
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
@@ -19,7 +20,10 @@ export class ContactComponent implements OnInit {
   processForm() {
     console.log(this.model);
 
-    this.submitted = true;
+    this.dataService.addComments(this.model).subscribe(data => {
+      this.submitted = true;
+    });
+    
   }
 
 }
