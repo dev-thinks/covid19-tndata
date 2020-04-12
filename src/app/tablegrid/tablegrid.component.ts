@@ -55,7 +55,6 @@ export class TablegridComponent implements OnInit {
 
     if (selectedRows != null && selectedRows.length > 0) {
       let dtName = selectedRows[0].name;
-      console.log('initiated for ' + dtName);
 
       this.commonService.announceMission(dtName);
     }

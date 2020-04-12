@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartCaseComponent } from './chart/chartCase.component';
 import { TablegridComponent } from './tablegrid/tablegrid.component';
 import { ChartDeathComponent } from './chart/chart-death.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ChartDeathComponent } from './chart/chart-death.component';
     DashboardComponent,
     ChartCaseComponent,
     TablegridComponent,
-    ChartDeathComponent
+    ChartDeathComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

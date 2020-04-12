@@ -56,7 +56,7 @@ export class MapComponent implements AfterViewInit {
     // method that we will use to update the control based on feature properties passed
     this.info.update = function (props) {
       this._div.innerHTML = '<h4>Tamil Nadu Status</h4>' + (props ?
-        '<b>' + props.district + '</b><br />Total Cases:' + props.totalCases + ' ~~ New Cases: ' + props.newCases +
+        '<b>' + props.district + '</b><br />Total Cases:<b>' + props.totalCases + '</b> ~~ New Cases: <b>' + props.newCases + '</br>'+
         '<br/><span class="badge badge-primary cursor-pointer" id="resetlink">Reset view</span>'
         : 'Click over a district to see more information. <br/><span class="badge badge-primary cursor-pointer" id="resetlink">Reset view</span>');
     };
@@ -103,14 +103,14 @@ export class MapComponent implements AfterViewInit {
     container.className = 'legend';
 
     const labels = [
-      '< ' + v1 + ' cases',
-      'Between ' + v1 + ' and ' + v2 + ' cases',
+      '>= ' + v3 + ' cases',
       'Between ' + v2 + ' and ' + v3 + ' cases',
-      '>= ' + v3 + ' cases'
+      'Between ' + v1 + ' and ' + v2 + ' cases',
+      '< ' + v1 + ' cases'
     ];
-    const grades = [v1, v1 + 1, v2, v3];
+
     container.innerHTML = '';
-    for (let i = grades.length - 1; i >= 0; i--) {
+    for (let i = labels.length - 1; i >= 0; i--) {
       container.innerHTML += '<span class="legend-text"><i class="legend' + i + '-color"> &nbsp; &nbsp;</i> &nbsp; &nbsp;'
         + labels[i] + '</span><br/>';
     }
