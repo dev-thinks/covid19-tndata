@@ -4,7 +4,9 @@ This portal is an effort to consolidating the daily report released by Health de
 
 ## Data source
 
-Govt. of Tamil Nadu, Health & Family Welfare Department: https://stopcorona.tn.gov.in/. Volunteers! always welcome to maintain this site and for consolidating the data from official site.
+Govt. of Tamil Nadu, Health & Family Welfare Department: https://stopcorona.tn.gov.in/. 
+
+Volunteers! always welcome to maintain this site and for consolidating the data from official site.
 
 ## Development server
 
