@@ -29,33 +29,40 @@
     </section>
     <section class="section">
         <div class="container">
-            <form (ngSubmit)="processForm()">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" [(ngModel)]="name"
-                        required minlength="3" #nameInput="ngModel">
-                    <!-- <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-                    Name is required
-                </div> -->
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" name="email" class="form-control" placeholder="Your Email" [(ngModel)]="email"
-                        required email #emailInput="ngModel">
-                    <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty">
-                        Needs to be a valid email.
+            <div [hidden]="submitted">
+                <form (ngSubmit)="processForm()" #commentForm="ngForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name"
+                            #name="ngModel" placeholder="Name">
+                        <div [hidden]="name.valid || name.pristine" class="text-danger">
+                            Please enter name
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="message">Comments</label>
-                    <textarea class="textarea form-control" name="message" placeholder="Feedback or comments"
-                        [(ngModel)]="message" required #messageInput="ngModel"></textarea>
-                    <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty">
-                        Feedback or comments
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" class="form-control" id="email" required [(ngModel)]="model.email"
+                            name="email" #email="ngModel" placeholder="Email Address" email>
+                        <div [hidden]="email.valid || email.pristine" class="text-danger">
+                            Please enter a valid email address
+                        </div>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
+                    <div class="form-group">
+                        <label for="message">Comments</label>
+                        <textarea class="textarea form-control" name="message" placeholder="Feedback or comments"
+                            [(ngModel)]="model.message" required #message="ngModel"></textarea>
+                        <div [hidden]="message.valid || message.pristine" class="text-danger">
+                            Please enter comments
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success" [disabled]="!commentForm.form.valid">Submit</button>
+                </form>
+            </div>
+            <div [hidden]="!submitted">
+                <h5 class="text-success">
+                    <ngx-emoji emoji=":rocket::skin-tone-3:" size="20"></ngx-emoji> Thank you for your feedback!
+                </h5>
+            </div>
         </div>
     </section>
 
@@ -69,10 +76,11 @@
     <section class="section">
         <div class="container">
             <ul>
-                <li>Maps: <a href="https://leafletjs.com/" rel="nofollow">Leafletjs</a></li>
+                <li>Maps: <a href="https://leafletjs.com/" rel="nofollow">Leafletjs</a> + <a href="https://qgis.org/"
+                        rel="nofollow">QGIS</a></li>
                 <li><a href="https://www.highcharts.com/" rel="nofollow">Highcharts</a> for charts and <a
                         href="https://www.ag-grid.com/angular-grid/" rel="nofollow">ag-grid</a> for tables</li>
-                <li>and of course, <a href="https://angularjs.org" rel="nofollow">Angular</a> + <a
+                <li>of course, <a href="https://angularjs.org" rel="nofollow">Angular</a> + <a
                         href="https://github.com/dotnet/aspnetcore" rel="nofollow">.NET Core</a> with linux flavor
                 </li>
             </ul>

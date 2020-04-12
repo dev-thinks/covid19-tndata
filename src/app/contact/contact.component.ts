@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContactInfo } from './contact-info';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  name: string;
-  email: string;
-  message: string;
+  model = new ContactInfo('', '', '');
+  submitted = false;
   
   constructor() { }
 
@@ -17,8 +17,9 @@ export class ContactComponent implements OnInit {
   }
 
   processForm() {
-    const allInfo = `My name is ${this.name}. My email is ${this.email}. My message is ${this.message}`;
-    alert(allInfo);
+    console.log(this.model);
+
+    this.submitted = true;
   }
 
 }
