@@ -9,11 +9,11 @@
     <section class="section">
         <div class="container">
             <ul>
-                <li>Govt. of Tamil Nadu, Health & Family Welfare Department: <a href="https://stopcorona.tn.gov.in/"
-                        rel="nofollow">https://stopcorona.tn.gov.in/</a></li>
-                <li>This portal is an effort to consolidating the daily report released by Health dept. during daily
-                    briefing at 6 PM, which tries to enable us to view in one place. Please let us know in comments when
-                    seeing any discrepencies against Govt. release</li>
+                <li>Govt. of Tamil Nadu, Health & Family Welfare Department: <a href="https://stopcorona.tn.gov.in/" rel="nofollow">https://stopcorona.tn.gov.in/</a></li>
+                <li>This portal is an effort to consolidating the daily report released by Health dept. during daily briefing at 6 PM, which tries to enable us to view in one place. Please let us know in comments when seeing any discrepencies against Govt.
+                    release
+                </li>
+                <li>Some of the new districts are not visible still in map. We are working on it</li>
                 <li>Volunteers! always welcome to maintain this site and for consolidating the data from official site
                 </li>
             </ul>
@@ -33,24 +33,21 @@
                 <form (ngSubmit)="processForm()" #commentForm="ngForm">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name"
-                            #name="ngModel" placeholder="Name">
+                        <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel" placeholder="Name">
                         <div [hidden]="name.valid || name.pristine" class="text-danger">
                             Please enter name
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" class="form-control" id="email" required [(ngModel)]="model.email"
-                            name="email" #email="ngModel" placeholder="Email Address" email>
+                        <input type="email" class="form-control" id="email" required [(ngModel)]="model.email" name="email" #email="ngModel" placeholder="Email Address" email>
                         <div [hidden]="email.valid || email.pristine" class="text-danger">
                             Please enter a valid email address
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="message">Comments</label>
-                        <textarea class="textarea form-control" name="message" placeholder="Feedback or comments"
-                            [(ngModel)]="model.message" required #message="ngModel"></textarea>
+                        <textarea class="textarea form-control" name="message" placeholder="Feedback or comments" [(ngModel)]="model.message" required #message="ngModel"></textarea>
                         <div [hidden]="message.valid || message.pristine" class="text-danger">
                             Please enter comments
                         </div>
@@ -76,12 +73,9 @@
     <section class="section">
         <div class="container">
             <ul>
-                <li>Maps: <a href="https://leafletjs.com/" rel="nofollow">Leafletjs</a> + <a href="https://qgis.org/"
-                        rel="nofollow">QGIS</a></li>
-                <li><a href="https://www.highcharts.com/" rel="nofollow">Highcharts</a> for charts and <a
-                        href="https://www.ag-grid.com/angular-grid/" rel="nofollow">ag-grid</a> for tables</li>
-                <li>of course, <a href="https://angularjs.org" rel="nofollow">Angular</a> + <a
-                        href="https://github.com/dotnet/aspnetcore" rel="nofollow">.NET Core</a> with linux flavor
+                <li>Maps: <a href="https://leafletjs.com/" rel="nofollow">Leafletjs</a> + <a href="https://qgis.org/" rel="nofollow">QGIS</a></li>
+                <li><a href="https://www.highcharts.com/" rel="nofollow">Highcharts</a> for charts and <a href="https://www.ag-grid.com/angular-grid/" rel="nofollow">ag-grid</a> for tables</li>
+                <li>of course, <a href="https://angularjs.org" rel="nofollow">Angular</a> + <a href="https://github.com/dotnet/aspnetcore" rel="nofollow">.NET Core</a> with linux flavor
                 </li>
             </ul>
         </div>

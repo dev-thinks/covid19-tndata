@@ -60,6 +60,22 @@ export class TablegridComponent implements OnInit {
     }
   }
 
+  onGridSizeChanged(params){
+    let r = this.gridApi;
+
+    if(this.gridColumnApi) {
+        this.gridColumnApi.setColumnVisible("death", true);
+        this.gridColumnApi.setColumnVisible("recovered", true);
+
+        if(window.innerWidth < 786) {
+          this.gridColumnApi.setColumnVisible("death", false);
+          this.gridColumnApi.setColumnVisible("recovered", false);
+        }
+
+        params.api.sizeColumnsToFit();
+    }
+  }
+
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
