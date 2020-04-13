@@ -20,6 +20,7 @@ import { ChartCaseComponent } from './chart/chartCase.component';
 import { TablegridComponent } from './tablegrid/tablegrid.component';
 import { ChartDeathComponent } from './chart/chart-death.component';
 import { FooterComponent } from './footer/footer.component';
+import { GoogleAnalyticsService } from './_services/google-analytics.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { FooterComponent } from './footer/footer.component';
     NgxScrollTopModule,
     AgGridModule.withComponents([])
   ],
-  providers: [ShapeService, PopUpService],
+  providers: [ShapeService, PopUpService, GoogleAnalyticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
