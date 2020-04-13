@@ -26,7 +26,7 @@ export class ChartCaseComponent implements OnInit, OnDestroy {
 
     this.subsVar = this.commonService.missionAnnounced$.subscribe(
       districtName => {
-        console.log('received case for ' + districtName);
+        // console.log('received case for ' + districtName);
 
         this.loadChart(districtName);
       });

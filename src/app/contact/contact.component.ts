@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
   }
 
   processForm() {
-    console.log(this.model);
+    // console.log(this.model);
 
     this.dataService.addComments(this.model).subscribe(data => {
       this.submitted = true;

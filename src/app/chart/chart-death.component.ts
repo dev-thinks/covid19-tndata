@@ -26,7 +26,7 @@ export class ChartDeathComponent implements OnInit, OnDestroy {
 
     this.subsVar = this.commonService.missionAnnounced$.subscribe(
       districtName => {
-        console.log('received death for ' + districtName);
+        // console.log('received death for ' + districtName);
 
         this.loadChart(districtName);
       });
