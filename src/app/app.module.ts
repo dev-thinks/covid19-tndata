@@ -21,6 +21,7 @@ import { TablegridComponent } from './tablegrid/tablegrid.component';
 import { ChartDeathComponent } from './chart/chart-death.component';
 import { FooterComponent } from './footer/footer.component';
 import { GoogleAnalyticsService } from './_services/google-analytics.service';
+import { TablesummaryComponent } from './tablesummary/tablesummary.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { GoogleAnalyticsService } from './_services/google-analytics.service';
     ChartCaseComponent,
     TablegridComponent,
     ChartDeathComponent,
-    FooterComponent
+    FooterComponent,
+    TablesummaryComponent
   ],
   imports: [
     BrowserModule,

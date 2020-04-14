@@ -12,6 +12,8 @@ export class DashboardComponent implements OnInit {
   stateDeathCount;
   stateRecovered;
 
+  showDistrictSummary = false;
+
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
@@ -20,6 +22,7 @@ export class DashboardComponent implements OnInit {
       this.stateDeathCount = data.totalDeath;
       this.stateRecovered = data.recovered;
     });
+    // this.showDistrictSummary = true;
   }
 
 }

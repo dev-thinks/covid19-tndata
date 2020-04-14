@@ -13,12 +13,13 @@ export class GoogleAnalyticsService {
         eventAction: string,
         eventLabel: string = null,
         eventValue: number = null) {
-        ga('send', 'event', {
-            eventCategory: eventCategory,
-            eventLabel: eventLabel,
-            eventAction: eventAction,
-            eventValue: eventValue
-        });
-
+        try {
+            ga('send', 'event', {
+                eventCategory: eventCategory,
+                eventLabel: eventLabel,
+                eventAction: eventAction,
+                eventValue: eventValue
+            });
+        } catch (e) { }
     }
 }

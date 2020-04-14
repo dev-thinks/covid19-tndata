@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+table,
+th,
+td {
+  border: 1px solid rgb(175, 173, 173);
+  border-collapse: collapse;
+  border-radius: 2px;
+}
+
+th,
+td {
+  padding: 15px;
+}
