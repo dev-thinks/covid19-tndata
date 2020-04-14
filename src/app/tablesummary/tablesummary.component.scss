@@ -1,17 +1,53 @@
-table {
-  width: 100%;
-  table-layout: fixed;
+.counts.jsx-883442639 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
 }
 
-table,
-th,
-td {
-  border: 1px solid rgb(175, 173, 173);
-  border-collapse: collapse;
-  border-radius: 2px;
+section.jsx-883442639 div.jsx-883442639:first-child {
+  font-size: 0.55rem;
 }
 
-th,
-td {
-  padding: 15px;
+section.jsx-883442639:nth-child(1) strong.jsx-883442639,
+section.jsx-883442639:nth-child(1) span.jsx-883442639 {
+  color: #f60;
+}
+strong.jsx-883442639 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  -webkit-letter-spacing: -1px;
+  -moz-letter-spacing: -1px;
+  -ms-letter-spacing: -1px;
+  letter-spacing: -1px;
+  margin: 0px;
+  font-family: monospace;
+}
+
+section.jsx-883442639 div.jsx-883442639 {
+  font-size: 0.6rem;
+}
+
+section.jsx-883442639 {
+  margin: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  line-height: 20px;
 }

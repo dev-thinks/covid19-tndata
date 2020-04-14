@@ -24,6 +24,12 @@ export class DataService {
     return this.http.get(environment.apiUrl + 'griddata');
   }
 
+  getGridSummaryData(dtName): Observable<any> {
+    this.googleAnalyticsService.eventEmitter("getGridSummaryData", "DataService", dtName, 1);
+
+    return this.http.get(environment.apiUrl + 'gridsummary?dtName=' + dtName);
+  }
+
   addComments(contactInfo: ContactInfo): Observable<ContactInfo> {
     this.googleAnalyticsService.eventEmitter("addComments", "DataService", 'addcomment', 1);
 

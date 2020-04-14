@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { CommonService } from '../_services/common.service';
 import { Subscription } from 'rxjs';
+import { DataService } from '../_services/data.service';
 
 @Component({
   selector: 'app-tablesummary',
@@ -12,7 +13,14 @@ export class TablesummaryComponent implements OnInit, OnDestroy {
   subsVar: Subscription;
   dtName;
 
-  constructor(private commonService: CommonService, private elementRef: ElementRef) { }
+  districtData = {
+    totalCases: 0, newCases: 0,
+    totalRecovered: 0, newRecovered: 0,
+    totalDeath: 0, newDeath: 0
+  };
+
+  constructor(private commonService: CommonService, private elementRef: ElementRef
+    , private dataService: DataService) { }
 
   ngOnInit(): void {
   }
@@ -24,14 +32,15 @@ export class TablesummaryComponent implements OnInit, OnDestroy {
         this.dtName = districtName;
 
         if (districtName != null && districtName.length > 0) {
+          this.dataService.getGridSummaryData(districtName).subscribe(data => {
+            this.districtData = data;
+            console.log(this.districtData);
+          });
         }
-
       });
   }
 
-  private resetView() {
-    // (<HTMLElement>document.querySelector('#tableSummaryGrid')).style.display = 'none';
-
+  resetView() {
     this.commonService.announceMission('');
   }
 
