@@ -25,8 +25,7 @@ export class MapComponent implements AfterViewInit {
       this.initStatesLayer();
     });
 
-    this.elementRef.nativeElement.querySelector('#resetlink')
-      .addEventListener('click', this.resetView.bind(this));
+    // this.elementRef.nativeElement.querySelector('#resetlink').addEventListener('click', this.resetView.bind(this));
   }
 
   private initMap(): void {
@@ -62,7 +61,7 @@ export class MapComponent implements AfterViewInit {
         : 'Click over a district to see more information. <br/><span class="badge badge-primary cursor-pointer" id="resetlink">Reset view</span>');
     };
 
-    this.info.addTo(this.map);
+    //this.info.addTo(this.map);
 
     L.Legend = L.Control.extend({
       'onAdd': function (map) {
@@ -157,20 +156,23 @@ export class MapComponent implements AfterViewInit {
   }
 
   private highlightFeature(e, feature) {
-    this.elementRef.nativeElement.querySelector('#resetlink')
-      .addEventListener('click', this.resetView.bind(this));
-  }
-
-  private RefreshOnClick(e, feature) {
     const layer = e.target;
 
     var content = this.popupService.makeCapitalPopup(feature);
     layer.bindPopup(content);
 
-    this.info.update(feature.properties);
+    // this.elementRef.nativeElement.querySelector('#resetlink').addEventListener('click', this.resetView.bind(this));
+  }
 
-    this.elementRef.nativeElement.querySelector('#resetlink')
-      .addEventListener('click', this.resetView.bind(this));
+  private RefreshOnClick(e, feature) {
+    // const layer = e.target;
+
+    // var content = this.popupService.makeCapitalPopup(feature);
+    // layer.bindPopup(content);
+
+    // this.info.update(feature.properties);
+
+    // this.elementRef.nativeElement.querySelector('#resetlink').addEventListener('click', this.resetView.bind(this));
 
     this.refreshDataForMap(feature.properties.district);
   }

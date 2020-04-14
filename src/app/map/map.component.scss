@@ -1,118 +1,136 @@
 .map-container {
-  height: 550px;
-  // margin: 20px;
+    height: 550px;
+    // margin: 20px;
 }
 
 .map-frame {
-  border: 1px solid grey;
-  height: 100%;
+    border: 1px solid rgb(197, 197, 197);
+    height: 100%;
+    border-radius: 2px;
 }
 
 #map {
-  height: 100%;
+    height: 100%;
 }
 
 ::ng-deep .legend {
-  font: 14px/16px Arial, Helvetica, sans-serif;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  padding: 6px 8px;
-  // width: 180px;
-  line-height: 18px;
-  color: #555;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 6px 8px;
+    // width: 180px;
+    line-height: 18px;
+    color: #555;
 }
+
 ::ng-deep .legend i {
-  width: 16px;
-  height: 16px;
-  float: left;
-  margin-right: 8px;
-  opacity: 0.7;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
 }
 
 ::ng-deep .info {
-  padding: 6px 8px;
-  font: 10px/12px Arial, Helvetica, sans-serif;
-  background: white;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+    padding: 6px 8px;
+    font: 10px/12px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
+
 ::ng-deep .info h4 {
-  margin: 0 0 5px;
-  color: #777;
-  text-transform: uppercase;
-  font-weight: 600;
+    margin: 0 0 5px;
+    color: #777;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 ::ng-deep .leaflet-popup-content-wrapper {
-  background: #d0e1e6;
-  color: rgb(3, 3, 3);
-  font-size: 10px;
-  line-height: 24px;
+    background: #d0e1e6;
+    color: rgb(3, 3, 3);
+    font-size: 10px;
+    line-height: 24px;
 }
 
 ::ng-deep .leaflet-popup-content-wrapper a {
-  color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 ::ng-deep .leaflet-popup-tip-container {
-  width: 30px;
-  height: 15px;
+    width: 30px;
+    height: 15px;
 }
 
 ::ng-deep .leaflet-popup-tip {
-  border-top: 15px solid #d0e1e6;
-  background: #d0e1e6;
+    border-top: 15px solid #d0e1e6;
+    background: #d0e1e6;
 }
 
 ::ng-deep .default-color {
-  stroke: blue;
-  fill: #868383;
-  opacity: 0.5;
+    stroke: blue;
+    fill: #868383;
+    opacity: 0.5;
 }
 
 ::ng-deep .level3-color {
-  stroke: rgb(3, 3, 141);
-  fill: rgb(255, 251, 8);
+    stroke: rgb(3, 3, 141);
+    fill: rgb(255, 251, 8);
 }
 
 ::ng-deep .level2-color {
-  stroke: rgb(3, 3, 141);
-  fill: rgb(253, 157, 93);
+    stroke: rgb(3, 3, 141);
+    fill: rgb(253, 157, 93);
 }
 
 ::ng-deep .level1-color {
-  stroke: rgb(3, 3, 141);
-  fill: rgb(255, 102, 0);
+    stroke: rgb(3, 3, 141);
+    fill: rgb(255, 102, 0);
 }
 
 ::ng-deep .level0-color {
-  stroke: rgb(3, 3, 141);
-  fill: rgb(255, 0, 0);
+    stroke: rgb(3, 3, 141);
+    fill: rgb(255, 0, 0);
 }
 
 ::ng-deep .cursor-pointer {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 ::ng-deep .legend3-color {
-  background: rgb(255, 251, 8);
+    background: rgb(255, 251, 8);
 }
 
 ::ng-deep .legend2-color {
-  background: rgb(253, 157, 93);
+    background: rgb(253, 157, 93);
 }
 
 ::ng-deep .legend1-color {
-  background: rgb(255, 102, 0);
+    background: rgb(255, 102, 0);
 }
 
 ::ng-deep .legend0-color {
-  background: rgb(255, 0, 0);
+    background: rgb(255, 0, 0);
 }
 
 ::ng-deep .legend-text {
-  font-size: 12px;
-  font-weight: bold;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+::ng-deep .badge-level3 {
+    color: rgb(8, 8, 8);
+    background-color: rgb(255, 251, 8);
+}
+
+::ng-deep .badge-level2 {
+    color: rgb(8, 8, 8);
+    background-color: rgb(253, 157, 93);
+}
+
+::ng-deep .badge-level1 {
+    color: rgb(8, 8, 8);
+    background-color: rgb(255, 102, 0);
 }
