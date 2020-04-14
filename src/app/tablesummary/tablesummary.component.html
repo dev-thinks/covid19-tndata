@@ -1,7 +1,9 @@
 <table>
     <thead>
         <tr>
-            <th>District Name</th>
+            <th>District Name
+                <span class="badge badge-primary cursor-pointer float-right" (click)="resetView()">Reset view</span>
+            </th>
             <th>Total cases</th>
             <th>Recovered</th>
             <th>Reported death</th>
@@ -9,7 +11,7 @@
     </thead>
     <tbody>
         <tr>
-            <td></td>
+            <td>{{dtName}}</td>
             <td></td>
             <td></td>
             <td></td>

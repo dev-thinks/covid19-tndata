@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ElementRef } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { ChartService } from '../_services/chart.service';
 import { CommonService } from '../_services/common.service';
@@ -15,7 +15,8 @@ export class ChartCaseComponent implements OnInit, OnDestroy {
   public highcharts;
   subsVar: Subscription;
 
-  constructor(private chartService: ChartService, private commonService: CommonService) {
+  constructor(private chartService: ChartService, private commonService: CommonService
+    , private elementRef: ElementRef) {
   }
 
   ngOnInit(): void {
@@ -26,12 +27,8 @@ export class ChartCaseComponent implements OnInit, OnDestroy {
 
     this.subsVar = this.commonService.missionAnnounced$.subscribe(
       districtName => {
-        // console.log('received case for ' + districtName);
-
         this.loadChart(districtName);
       });
-
-    // this.commonService.missionAnnounced$.next('');
   }
 
   loadChart(dtName: string) {
