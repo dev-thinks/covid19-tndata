@@ -25,16 +25,14 @@ export class MapComponent implements AfterViewInit {
       this.states = states;
       this.initStatesLayer();
     });
-
-    // this.elementRef.nativeElement.querySelector('#resetlink').addEventListener('click', this.resetView.bind(this));
   }
 
   private initMap(): void {
     this.map = L.map('map', {zoomControl: false, draggable: false}).setView([11, 78.555], 7);
 
     const tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> ' +
+        'contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       maxZoom: 19
     });
     tiles.addTo(this.map);
@@ -70,11 +68,7 @@ export class MapComponent implements AfterViewInit {
         // add reference to mapinstance
         map.legend = this;
 
-        const v1 = 10;
-        const v2 = 11;
-        const v3 = 100;
-
-        var container = L.DomUtil.create('div', 'legend');
+        let container = L.DomUtil.create('div', 'legend');
         if (this.options.content) {
           container.innerHTML = this.options.content;
         }
@@ -100,7 +94,7 @@ export class MapComponent implements AfterViewInit {
     const v2 = 50;
     const v3 = 100;
 
-    var container = document.createElement('div');
+    let container = document.createElement('div');
     container.className = 'legend';
 
     const labels = [
@@ -159,22 +153,11 @@ export class MapComponent implements AfterViewInit {
   private highlightFeature(e, feature) {
     const layer = e.target;
 
-    var content = this.popupService.makeCapitalPopup(feature);
+    let content = this.popupService.makeCapitalPopup(feature);
     layer.bindPopup(content);
-
-    // this.elementRef.nativeElement.querySelector('#resetlink').addEventListener('click', this.resetView.bind(this));
   }
 
   private RefreshOnClick(e, feature) {
-    // const layer = e.target;
-
-    // var content = this.popupService.makeCapitalPopup(feature);
-    // layer.bindPopup(content);
-
-    // this.info.update(feature.properties);
-
-    // this.elementRef.nativeElement.querySelector('#resetlink').addEventListener('click', this.resetView.bind(this));
-
     this.refreshDataForMap(feature.properties.district);
   }
 
