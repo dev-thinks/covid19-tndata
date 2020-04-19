@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import {Component} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
 
 declare let ga: Function;
 
@@ -18,8 +18,8 @@ export class AppComponent {
         try {
           ga('set', 'page', event.urlAfterRedirects);
           ga('send', 'pageview');
+        } catch (e) {
         }
-        catch (e) { }
       }
     });
   }

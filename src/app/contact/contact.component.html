@@ -55,7 +55,7 @@
           <div class="form-group">
             <label for="message">Comments</label>
             <textarea class="textarea form-control" id="message" name="message" placeholder="Feedback or comments"
-                      [(ngModel)]="model.message" required #message="ngModel" row="5"></textarea>
+                      [(ngModel)]="model.message" required #message="ngModel" rows="5"></textarea>
             <div [hidden]="message.valid || message.pristine" class="text-danger">
               Please enter comments
             </div>

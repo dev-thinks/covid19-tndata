@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import { GoogleAnalyticsService } from '../_services/google-analytics.service';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {GoogleAnalyticsService} from './google-analytics.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChartService {
 
-  constructor(private http: HttpClient, public googleAnalyticsService: GoogleAnalyticsService) { }
+  constructor(private http: HttpClient, public googleAnalyticsService: GoogleAnalyticsService) {
+  }
 
   getChartCaseData(dtName: string): Observable<any> {
     this.googleAnalyticsService.eventEmitter("getChartCaseData", "ChartService", dtName, 1);

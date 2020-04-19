@@ -1,6 +1,8 @@
 <ag-grid-angular #agGrid id="stateGrid" class="ag-theme-alpine" [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef" [rowData]="rowData" [getRowStyle]="getRowStyle" suppressCellSelection=true
-    (rowClicked)="onSelectionChanged($event)" rowSelection='single' [domLayout]="domLayout" [animateRows]="true"
-    (gridSizeChanged)="onGridSizeChanged($event)"
-    (selectionChanged)="onSelectionChanged($event)" (gridReady)="onGridReady($event)">
+                 [defaultColDef]="defaultColDef" [rowData]="rowData" [getRowStyle]="getRowStyle"
+                 suppressCellSelection=true
+                 (rowClicked)="onSelectionChanged($event)" rowSelection='single' [domLayout]="domLayout"
+                 [animateRows]="true"
+                 (gridSizeChanged)="onGridSizeChanged($event)"
+                 (selectionChanged)="onSelectionChanged($event)" (gridReady)="onGridReady($event)">
 </ag-grid-angular>

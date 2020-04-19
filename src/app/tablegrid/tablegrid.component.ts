@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../_services/data.service';
-import { CommonService } from '../_services/common.service';
+import {Component, OnInit} from '@angular/core';
+import {DataService} from '../_services/data.service';
+import {CommonService} from '../_services/common.service';
 
 @Component({
   selector: 'app-tablegrid',
@@ -12,7 +12,6 @@ export class TablegridComponent implements OnInit {
   private gridApi;
   defaultColDef;
   domLayout;
-  rowClassRules;
   private gridColumnApi;
   rowData;
   getRowStyle;
@@ -25,7 +24,7 @@ export class TablegridComponent implements OnInit {
 
     this.getRowStyle = function (params) {
       if (params.node.rowIndex === 0) {
-        return { 'font-weight': 'bolder', 'color': 'red' };
+        return {'font-weight': 'bolder', 'color': 'red'};
       }
     };
 
@@ -39,10 +38,10 @@ export class TablegridComponent implements OnInit {
   }
 
   columnDefs = [
-    { headerName: 'District Name', field: 'name', checkboxSelection: params => params.node.rowIndex > 0 },
-    { headerName: 'Total Case(s)', field: 'totalCases' },
-    { headerName: 'Reported Death(s)', field: 'death' },
-    { headerName: 'Recovered Case(s)', field: 'recovered' }
+    {headerName: 'District Name', field: 'name', checkboxSelection: params => params.node.rowIndex > 0},
+    {headerName: 'Total Case(s)', field: 'totalCases', sort: 'desc'},
+    {headerName: 'Reported Death(s)', field: 'death', sortable: false},
+    {headerName: 'Recovered Case(s)', field: 'recovered', sortable: false}
   ];
 
   setAutoHeight() {
@@ -51,7 +50,7 @@ export class TablegridComponent implements OnInit {
   }
 
   onSelectionChanged(event) {
-    var selectedRows = this.gridApi.getSelectedRows();
+    let selectedRows = this.gridApi.getSelectedRows();
 
     if (selectedRows != null && selectedRows.length > 0) {
       let dtName = selectedRows[0].name;
@@ -60,19 +59,17 @@ export class TablegridComponent implements OnInit {
     }
   }
 
-  onGridSizeChanged(params){
-    let r = this.gridApi;
+  onGridSizeChanged(params) {
+    if (this.gridColumnApi) {
+      this.gridColumnApi.setColumnVisible("death", true);
+      this.gridColumnApi.setColumnVisible("recovered", true);
 
-    if(this.gridColumnApi) {
-        this.gridColumnApi.setColumnVisible("death", true);
-        this.gridColumnApi.setColumnVisible("recovered", true);
+      if (window.innerWidth < 786) {
+        this.gridColumnApi.setColumnVisible("death", false);
+        this.gridColumnApi.setColumnVisible("recovered", false);
+      }
 
-        if(window.innerWidth < 786) {
-          this.gridColumnApi.setColumnVisible("death", false);
-          this.gridColumnApi.setColumnVisible("recovered", false);
-        }
-
-        params.api.sizeColumnsToFit();
+      params.api.sizeColumnsToFit();
     }
   }
 

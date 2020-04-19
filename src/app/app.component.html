@@ -1,16 +1,16 @@
 <div>
-    <div>
-        <app-navbar></app-navbar>
+  <div>
+    <app-navbar></app-navbar>
+  </div>
+  <div class="container content">
+    <div class="shadow-lg p-3 mt-3 mb-5 bg-white rounded">
+      <router-outlet></router-outlet>
     </div>
-    <div class="container content">
-        <div class="shadow-lg p-3 mt-3 mb-5 bg-white rounded">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-    <div>
-        <app-footer class="mt-auto"></app-footer>
-    </div>
+  </div>
+  <div>
+    <app-footer class="mt-auto"></app-footer>
+  </div>
 
-    <ngx-scrolltop></ngx-scrolltop>
+  <ngx-scrolltop></ngx-scrolltop>
 
 </div>

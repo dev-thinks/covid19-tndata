@@ -1,72 +1,73 @@
 <div>
-    <div class="row">
-        <div class="col-sm-12 col-lg-12 text-center">
-            <small class="text-muted display-5 font-weight-bold text-uppercase">
-                Case Summary in Tamil Nadu
-            </small>
-        </div>
+  <div class="row">
+    <div class="col-sm-12 col-lg-12 text-center">
+      <small class="text-muted display-5 font-weight-bold text-uppercase">
+        Case Summary in Tamil Nadu
+      </small>
     </div>
-    <div class="row paddingtop">
-        <div class="col-sm-6 col-lg-4">
-            <div class="card text-white bg-warning">
-                <div class="card-body">
-                    <div class="text-value text-center font-weight-bold display-5"><b>{{stateTotalCases}}</b> Total
-                        Cases</div>
-                </div>
-            </div>
+  </div>
+  <div class="row paddingtop">
+    <div class="col-sm-6 col-lg-4">
+      <div class="card text-white bg-warning">
+        <div class="card-body">
+          <div class="text-value text-center font-weight-bold display-5"><b>{{stateTotalCases}}</b> Total
+            Cases
+          </div>
         </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="card text-white bg-success">
-                <div class="card-body">
-                    <div class="text-value text-center font-weight-bold display-5"><b>{{stateRecovered}}</b> Recovered
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-4">
+      <div class="card text-white bg-success">
+        <div class="card-body">
+          <div class="text-value text-center font-weight-bold display-5"><b>{{stateRecovered}}</b> Recovered
+          </div>
         </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="card text-white bg-danger">
-                <div class="card-body">
-                    <div class="text-value text-center font-weight-bold display-5"><b>{{stateDeathCount}}</b> Deaths
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-4">
+      <div class="card text-white bg-danger">
+        <div class="card-body">
+          <div class="text-value text-center font-weight-bold display-5"><b>{{stateDeathCount}}</b> Deaths
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row paddingtop">
+    <div class="col-sm-12 col-lg-12 text-center">
+      <small class="text-muted font-weight-bold text-uppercase">
+        Click over a district in below map to see more information
+      </small>
     </div>
 
-    <div class="row paddingtop">
-        <div class="col-sm-12 col-lg-12 text-center">
-            <small class="text-muted font-weight-bold text-uppercase">
-                Click over a district in below map to see more information
-            </small>
-        </div>
-
-        <div class="col-sm-12 col-lg-12">
-            <app-map></app-map>
-        </div>
+    <div class="col-sm-12 col-lg-12">
+      <app-map></app-map>
     </div>
+  </div>
 
-    <div [hidden]="!showDistrictSummary" class="row paddingtop" id="tableSummaryGrid">
-        <div class="col-sm-12 col-lg-12">
-            <app-tablesummary></app-tablesummary>
-        </div>
+  <div [hidden]="!showDistrictSummary" class="row paddingtop" id="tableSummaryGrid">
+    <div class="col-sm-12 col-lg-12">
+      <app-tablesummary></app-tablesummary>
     </div>
+  </div>
 
-    <div class="row paddingtop">
-        <div class="col-sm-12 col-lg-12">
-            <app-chart-case></app-chart-case>
-        </div>
+  <div class="row paddingtop">
+    <div class="col-sm-12 col-lg-12">
+      <app-chart-case></app-chart-case>
     </div>
+  </div>
 
-    <div class="row paddingtop">
-        <div class="col-sm-12 col-lg-12">
-            <app-chart-death></app-chart-death>
-        </div>
+  <div class="row paddingtop">
+    <div class="col-sm-12 col-lg-12">
+      <app-chart-death></app-chart-death>
     </div>
+  </div>
 
-    <div class="row paddingtop">
-        <div class="col-sm-12 col-lg-12">
-            <app-tablegrid></app-tablegrid>
-        </div>
+  <div class="row paddingtop">
+    <div class="col-sm-12 col-lg-12">
+      <app-tablegrid></app-tablegrid>
     </div>
+  </div>
 
 </div>

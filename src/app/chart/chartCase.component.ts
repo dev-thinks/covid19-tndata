@@ -15,8 +15,7 @@ export class ChartCaseComponent implements OnInit, OnDestroy {
   public highcharts;
   subsVar: Subscription;
 
-  constructor(private chartService: ChartService, private commonService: CommonService
-    , private elementRef: ElementRef) {
+  constructor(private chartService: ChartService, private commonService: CommonService) {
   }
 
   ngOnInit(): void {

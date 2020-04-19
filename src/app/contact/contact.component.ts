@@ -11,19 +11,16 @@ export class ContactComponent implements OnInit {
 
   model = new ContactInfo('', '', '');
   submitted = false;
-  
+
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
   processForm() {
-    // console.log(this.model);
-
     this.dataService.addComments(this.model).subscribe(data => {
       this.submitted = true;
     });
-    
   }
 
 }

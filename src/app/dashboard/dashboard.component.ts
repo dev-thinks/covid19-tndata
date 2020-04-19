@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
-import { DataService } from '../_services/data.service';
-import { Subscription } from 'rxjs';
-import { CommonService } from '../_services/common.service';
+import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
+import {DataService} from '../_services/data.service';
+import {Subscription} from 'rxjs';
+import {CommonService} from '../_services/common.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +18,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   showDistrictSummary = false;
 
   constructor(private dataService: DataService, private commonService: CommonService
-    , private elementRef: ElementRef) { }
+    , private elementRef: ElementRef) {
+  }
 
   ngOnInit(): void {
     this.dataService.getStateData().subscribe(data => {
@@ -35,7 +36,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         if (districtName != null && districtName.length > 0) {
           this.showDistrictSummary = true;
 
-          this.elementRef.nativeElement.querySelector('#tableSummaryGrid').scrollIntoView({ behavior: "smooth" });
+          this.elementRef.nativeElement.querySelector('#tableSummaryGrid').scrollIntoView({behavior: "smooth"});
         } else {
           this.showDistrictSummary = false;
         }

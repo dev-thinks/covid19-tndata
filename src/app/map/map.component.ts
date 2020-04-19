@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, ElementRef } from '@angular/core';
+import {AfterViewInit, Component, ElementRef} from '@angular/core';
 import * as L from 'leaflet';
-import { ShapeService } from '../_services/shape.service';
-import { PopUpService } from '../_services/pop-up.service';
-import { CommonService } from '../_services/common.service';
+import {ShapeService} from '../_services/shape.service';
+import {PopUpService} from '../_services/pop-up.service';
+import {CommonService} from '../_services/common.service';
 
 @Component({
   selector: 'app-map',
@@ -15,7 +15,8 @@ export class MapComponent implements AfterViewInit {
   private states;
 
   constructor(private shapeService: ShapeService, private popupService: PopUpService,
-    private commonService: CommonService, private elementRef: ElementRef) { }
+              private commonService: CommonService, private elementRef: ElementRef) {
+  }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -29,7 +30,7 @@ export class MapComponent implements AfterViewInit {
   }
 
   private initMap(): void {
-    this.map = L.map('map', { zoomControl: false, draggable: false }).setView([11, 78.555], 7);
+    this.map = L.map('map', {zoomControl: false, draggable: false}).setView([11, 78.555], 7);
 
     const tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -56,7 +57,7 @@ export class MapComponent implements AfterViewInit {
     // method that we will use to update the control based on feature properties passed
     this.info.update = function (props) {
       this._div.innerHTML = '<h4>Tamil Nadu Status</h4>' + (props ?
-        '<b>' + props.district + '</b><br />Total Cases:<b>' + props.totalCases + '</b> ~~ New Cases: <b>' + props.newCases + '</br>'+
+        '<b>' + props.district + '</b><br />Total Cases:<b>' + props.totalCases + '</b> ~~ New Cases: <b>' + props.newCases + '</br>' +
         '<br/><span class="badge badge-primary cursor-pointer" id="resetlink">Reset view</span>'
         : 'Click over a district to see more information. <br/><span class="badge badge-primary cursor-pointer" id="resetlink">Reset view</span>');
     };

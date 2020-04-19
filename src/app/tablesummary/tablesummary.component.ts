@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
-import { CommonService } from '../_services/common.service';
-import { Subscription } from 'rxjs';
-import { DataService } from '../_services/data.service';
+import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
+import {CommonService} from '../_services/common.service';
+import {Subscription} from 'rxjs';
+import {DataService} from '../_services/data.service';
 
 @Component({
   selector: 'app-tablesummary',
@@ -20,7 +20,8 @@ export class TablesummaryComponent implements OnInit, OnDestroy {
   };
 
   constructor(private commonService: CommonService, private elementRef: ElementRef
-    , private dataService: DataService) { }
+    , private dataService: DataService) {
+  }
 
   ngOnInit(): void {
   }
