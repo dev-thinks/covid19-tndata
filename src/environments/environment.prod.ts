@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://apiserve.azurewebsites.net/api/map/'
+  apiUrl: 'https://apigreenbox.azurewebsites.net/api/map/'
 };
